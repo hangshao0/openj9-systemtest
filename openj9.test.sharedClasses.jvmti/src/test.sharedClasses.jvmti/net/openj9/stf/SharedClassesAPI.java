@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2017 IBM Corp.
+* Copyright (c) 2017, 2018 IBM Corp.
 *
 * This program and the accompanying materials are made available under the
 * terms of the Eclipse Public License 2.0 which accompanies this distribution
@@ -144,12 +144,13 @@ public class SharedClassesAPI implements SharedClassesPluginInterface {
 			}		
 
 			String utilities = (apiTest.usesUtilities ? "-Xshareclasses:utilities" : "");
+			String groupAccess = (apiTest.usesGroupAccess ? ",groupAccess" : "");
 			
 			// Start a workload process for each cache.
-			StfProcess wl1 = startWorkload(test, apiTest, "WL1", cacheDir, ",persistent");
-			StfProcess wl2 = startWorkload(test, apiTest, "WL2", cacheDir, ",persistent");
-			StfProcess wl3 = startWorkload(test, apiTest, "WL3", cacheDir, ",nonpersistent");
-			StfProcess wl4 = startWorkload(test, apiTest, "WL4", cacheDir, ",nonpersistent");
+			StfProcess wl1 = startWorkload(test, apiTest, "WL1", cacheDir, "persistent");
+			StfProcess wl2 = startWorkload(test, apiTest, "WL2", cacheDir, "persistent");
+			StfProcess wl3 = startWorkload(test, apiTest, "WL3", cacheDir, "nonpersistent");
+			StfProcess wl4 = startWorkload(test, apiTest, "WL4", cacheDir, "nonpersistent");
 
 			// Monitor the workload processes to completion.
 			test.doMonitorProcesses(commentPrefix + "Monitor workload processes", wl1, wl2, wl3, wl4);

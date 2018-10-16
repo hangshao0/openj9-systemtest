@@ -82,7 +82,7 @@ public class SharedClassesCacheChecker {
 	private boolean delete = false; 
 	
 	/** If true, the command line value for the cache directory will be use (-Xshareclasses:cacheDir=....) */
-	private boolean commandLineValues = false;
+	private boolean commandLineValues = true;
 	
 	// All properties from the main config file
 	private Properties config;
